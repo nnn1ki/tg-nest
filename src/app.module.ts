@@ -22,7 +22,7 @@ import { TelegramModule } from './telegram/telegram.module'
 		TypegooseModule.forRootAsync({
 			imports: [ConfigModule],
 			inject: [ConfigService],
-			// отключаем монго
+
 			useFactory: getMongoConfig,
 		}),
 		AuthModule,
