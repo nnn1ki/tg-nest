@@ -7,6 +7,7 @@ export const getMongoConfig = async (
 ): Promise<TypegooseModuleOptions> => ({
 	uri: getMongoUrl(configService),
 	...getMongoOption(),
+
 })
 
 const getMongoOption = () => ({
