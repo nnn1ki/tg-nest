@@ -6,10 +6,7 @@ import { TopPageModule } from './top-page/top-page.module'
 import { ProductModule } from './product/product.module'
 import { ReviewModule } from './review/review.module'
 import { TypegooseModule } from 'nestjs-typegoose'
-
 import { getMongoConfig } from './config/mongo.config'
-
-
 import { AuthModule } from './auth/auth.module'
 import { FilesModule } from './files/files.module'
 import { SitemapModule } from './sitemap/sitemap.module'
@@ -41,12 +38,9 @@ import { UserSchema} from "./Schemas/user.schema"; //схема данных д�
 		FilesModule,
 		SitemapModule,
 		TelegramModule,
-
-
 		UserSchema,
 
 
-		// UserModule
 	],
 	controllers: [AppController],
 	providers: [AppService],
