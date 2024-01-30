@@ -18,6 +18,8 @@ const getMongoOption = () => ({
 
 const getMongoUrl = (configService: ConfigService): string =>
 	'mongodb+srv://admin:admin@cluster0.4awrspq.mongodb.net/?retryWrites=true&w=majority'
+  //'mongodb+srv://admin:admin@cluster0.4awrspq.mongodb.net/?retryWrites=true&w=majority'
+   //'mongodb+srv://admin:admin@atlascluster.c0mq32o.mongodb.net/?retryWrites=true&w=majority'
 	// 'mongodb://' +
 	// configService.get('MONGO_LOGIN') +
 	// ':' +

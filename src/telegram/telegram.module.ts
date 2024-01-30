@@ -4,6 +4,7 @@ import { TelegrafModule } from 'nestjs-telegraf'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { getTelegramConfig } from '../config/telegram.config'
 import { StoryScene } from './telegram.story'
+import {UserModel} from "../auth/user.model";
 
 @Global()
 @Module({

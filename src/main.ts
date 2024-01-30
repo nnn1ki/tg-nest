@@ -5,7 +5,7 @@ async function bootstrap() {
 	const app = await NestFactory.create(AppModule)
 	app.setGlobalPrefix('api')
 	app.enableCors({ allowedHeaders: '*' })
-	await app.listen(9000)
+	await app.listen(8000)
 }
 
 bootstrap()
