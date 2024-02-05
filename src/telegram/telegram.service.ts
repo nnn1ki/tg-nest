@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { Scenes, Telegraf } from 'telegraf'
 import { InjectBot, Start, Update } from 'nestjs-telegraf'
-import { UsersService } from '../user/users.service';
+import { UserService } from '../user/user.service';
 
 @Update()
 @Injectable()

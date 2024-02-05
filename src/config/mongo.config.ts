@@ -14,6 +14,9 @@ const getMongoOption = () => ({
 	//useNewUrlParser: true,
 	//useCreateIndex: true,
 	useUnifiedTopology: true,
+	autoCreate: true,
+	// connectTimeoutMS: 30000,
+	// socketTimeoutMS: 45000,
 })
 
 const getMongoUrl = (configService: ConfigService): string =>
