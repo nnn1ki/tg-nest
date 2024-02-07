@@ -118,12 +118,12 @@ export class StoryScene {
 
 
 		const client = new Client(
-			'https://my.baikal-p.ru',
-			'add60ba089673e2fb2fec8f9a404b603',
-			'538baa48fcb8ea0bd8c57e3084795945'
+			'https://my.baikal-family.ru',
+			'99d864bd61e61ab41b16666ba7d0d0a2',
+			'359bcb86d0330f259a282196f19583d1'
 		);
 
-		client.request('POST', 'UsernameTG', userInfo)
+		client.request('POST', 'Telegram', userInfo)
 			.then(
 				(response) => {
 					// success
