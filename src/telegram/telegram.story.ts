@@ -97,51 +97,25 @@ export class StoryScene {
 		}
 
 
-		// try {
-		// 	console.log('Trying to connect to MongoDB...');
-		//
-		// 	//todo - правильно получать ссылку из .env
-		// 	await mongoose.connect('mongodb+srv://admin:admin@cluster0.4awrspq.mongodb.net/?retryWrites=true&w=majority', {
-		// 		// useNewUrlParser: true,
-		// 		// useUnifiedTopology: true,
-		// 	});
-		// 	console.log('Connected to MongoDB successfully!');
-		// 	await UserMongoModel.create(userInfo);
-		// 	console.log('Data sent:', userInfo);
-		// } catch (e){
-		// 	console.log("Возникла ошибка при отправке данных - ", e);
-		// } finally {
-		// 	// Close the connection when done (important to avoid hanging connections)
-		// 	await mongoose.disconnect();
-		// 	console.log('Disconnected from MongoDB.');
-		// }
+		try {
+			console.log('Trying to connect to MongoDB...');
 
+			//todo - правильно получать ссылку из .env
+			await mongoose.connect('mongodb+srv://admin:admin@cluster0.4awrspq.mongodb.net/?retryWrites=true&w=majority', {
+				// useNewUrlParser: true,
+				// useUnifiedTopology: true,
+			});
+			console.log('Connected to MongoDB successfully!');
+			await UserMongoModel.create(userInfo);
+			console.log('Data sent:', userInfo);
+		} catch (e){
+			console.log("Возникла ошибка при отправке данных - ", e);
+		} finally {
+			// Close the connection when done (important to avoid hanging connections)
+			await mongoose.disconnect();
+			console.log('Disconnected from MongoDB.');
+		}
 
-		// Отправка данных в EspoCRM
-		// try {
-		// 	const espocrmApiUrl = 'https://my.baikal-p.ru/';
-		// 	const espocrmApiKey = 'add60ba089673e2fb2fec8f9a404b603';
-		//
-		// 	const response = await axios.post(`${espocrmApiUrl}api/v1/#Contact`, userInfo, {
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 			'Authorization': `Bearer ${espocrmApiKey}`,
-		// 		},
-		// 	});
-		//
-		//
-		// 	console.log('Данные успешно отправлены в EspoCRM:', response.data);
-		// } catch (error) {
-		// 	console.error('Ошибка при отправке данных в EspoCRM:', error.message);
-		// }
-
-		// const espocrmClient = new Client('https://my.baikal-p.ru/', 'add60ba089673e2fb2fec8f9a404b603', 'secretKey')
-		//
-		// try {
-		// 	await espocrmClient.request('POST', '/#Contact', userInfo);
-		// }catch (e){
-		// 	console.log("Ошибка отправки данных в CRM");
-		// }
 
 		const client = new Client(
 			'https://my.baikal-p.ru',
