@@ -12,9 +12,10 @@ export default class Client {
     private urlPath: string;
     private isHttps: boolean;
 
-    constructor(url: string, apiKey: string, options?: any) {
+    constructor(url: string, apiKey: string, secretKey: string, options?: any) {
         this.url = url;
         this.apiKey = apiKey;
+        this.secretKey = secretKey;
 
         if (this.url.substr(-1) === '/') {
             this.url = this.url.substr(0, this.url.length - 1);
@@ -35,24 +36,24 @@ export default class Client {
 
         let headers: any = {};
 
-        // if (this.apiKey && this.secretKey) {
-        //     let string = method + ' /' + action;
-        //
-        //     let b2 = crypto
-        //         .createHmac('sha256', this.secretKey)
-        //         .update(string)
-        //         .digest();
-        //
-        //     let b1 = Buffer.from(this.apiKey + ':');
-        //
-        //     let authPart = Buffer.concat([b1, b2]).toString('base64');
-        //
-        //     headers['X-Hmac-Authorization'] = authPart;
-        // } else if (this.apiKey) {
-        //     headers['X-Api-Key'] = this.apiKey;
-        // } else {
-        //     throw new Error('Api-Key is not set.');
-        // }
+        if (this.apiKey && this.secretKey) {
+            let string = method + ' /' + action;
+
+            let b2 = crypto
+                .createHmac('sha256', this.secretKey)
+                .update(string)
+                .digest();
+
+            let b1 = Buffer.from(this.apiKey + ':');
+
+            let authPart = Buffer.concat([b1, b2]).toString('base64');
+
+            headers['X-Hmac-Authorization'] = authPart;
+        } else if (this.apiKey) {
+            headers['X-Api-Key'] = this.apiKey;
+        } else {
+            throw new Error('Api-Key is not set.');
+        }
 
         let postData: string | undefined;
 
@@ -97,7 +98,7 @@ export default class Client {
                     //
                     //     return;
                     // }
-                    reject(res);
+                    // reject(res);
                     try {
                         responseData = JSON.parse(responseData);
                     } catch (e) {

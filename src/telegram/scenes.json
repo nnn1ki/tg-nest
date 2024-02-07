@@ -15,6 +15,7 @@
       {"text": "Санаторно-курортное лечение", "nextStep": "spa-treatment"},
       {"text": "Полезная информация", "nextStep": "useful-information"},
 
+
       {"text": "Другое", "nextStep": "found-you-contact"}
     ]
   },

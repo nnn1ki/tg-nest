@@ -32,7 +32,7 @@ type UserSessionStorageService = typeof userSessionService
 
 interface IStoryStep {
 	replies: { type: string; message: string }[]
-	buttons: { text: string; nextStep: string }[]
+	buttons: { text: string; nextStep: string;}[]
 }
 
 const storySteps: Record<string, IStoryStep> = notValidatedStoryJson
@@ -71,7 +71,7 @@ export class StoryScene {
 
 		context.reply(replies.map(({ message }) => message).join('\n'), {
 			reply_markup: {
-				inline_keyboard: buttons.map(({ text, nextStep }) => [
+				inline_keyboard: buttons.map(({ text, nextStep}) => [
 					{
 						text,
 						callback_data: nextStep,
@@ -97,23 +97,24 @@ export class StoryScene {
 		}
 
 
-		//todo - исправить, почему то не отправляется в бд
-		try {
-			console.log('Trying to connect to MongoDB...');
-			await mongoose.connect('mongodb+srv://admin:admin@cluster0.4awrspq.mongodb.net/?retryWrites=true&w=majority', {
-				// useNewUrlParser: true,
-				// useUnifiedTopology: true,
-			});
-			console.log('Connected to MongoDB successfully!');
-			await UserMongoModel.create(userInfo);
-			console.log('Data sent:', userInfo);
-		} catch (e){
-			console.log("Возникла ошибка при отправке данных - ", e);
-		} finally {
-			// Close the connection when done (important to avoid hanging connections)
-			await mongoose.disconnect();
-			console.log('Disconnected from MongoDB.');
-		}
+		// try {
+		// 	console.log('Trying to connect to MongoDB...');
+		//
+		// 	//todo - правильно получать ссылку из .env
+		// 	await mongoose.connect('mongodb+srv://admin:admin@cluster0.4awrspq.mongodb.net/?retryWrites=true&w=majority', {
+		// 		// useNewUrlParser: true,
+		// 		// useUnifiedTopology: true,
+		// 	});
+		// 	console.log('Connected to MongoDB successfully!');
+		// 	await UserMongoModel.create(userInfo);
+		// 	console.log('Data sent:', userInfo);
+		// } catch (e){
+		// 	console.log("Возникла ошибка при отправке данных - ", e);
+		// } finally {
+		// 	// Close the connection when done (important to avoid hanging connections)
+		// 	await mongoose.disconnect();
+		// 	console.log('Disconnected from MongoDB.');
+		// }
 
 
 		// Отправка данных в EspoCRM
@@ -142,24 +143,25 @@ export class StoryScene {
 		// 	console.log("Ошибка отправки данных в CRM");
 		// }
 
-		// const client = new Client(
-		// 	'https://my.baikal-p.ru/',
-		// 	'add60ba089673e2fb2fec8f9a404b603'
-		// );
+		const client = new Client(
+			'https://my.baikal-p.ru',
+			'add60ba089673e2fb2fec8f9a404b603',
+			'538baa48fcb8ea0bd8c57e3084795945'
+		);
 
-		// client.request('POST', 'Account', userInfo);
-			// .then(
-			// 	(response) => {
-			// 		// success
-			// 		console.log(response);
-			// 	}
-			// )
-			// .catch(
-			// 	(res) => {
-			// 		// error
-			// 		console.log(res.statusCode, res.statusMessage);
-			// 	}
-			// );
+		client.request('POST', 'UsernameTG', userInfo)
+			.then(
+				(response) => {
+					// success
+					console.log(response);
+				}
+			)
+			.catch(
+				(res) => {
+					// error
+					console.log("Ошибка отправки - ", res.statusCode, res.statusMessage);
+				}
+			);
 
 		if (nextStep === 'stop') {
 			await userSessionService.updateUserSession(userId, {})
