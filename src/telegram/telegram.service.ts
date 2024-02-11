@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common'
-import { Scenes, Telegraf } from 'telegraf'
+import { Scenes, Telegraf, Markup } from 'telegraf'
 import { InjectBot, Start, Update } from 'nestjs-telegraf'
 import { UserService } from '../user/user.service';
+
 
 @Update()
 @Injectable()
@@ -20,6 +21,9 @@ export class TelegramService {
 			//telegramId: ctx.from.id,
 			// Добавьте другие поля, если необходимо
 		//};
+
+
+
 
 		//this.usersService.create(user);
 	}

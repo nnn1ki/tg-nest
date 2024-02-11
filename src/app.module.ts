@@ -10,10 +10,11 @@ import { getMongoConfig } from './config/mongo.config'
 import { AuthModule } from './auth/auth.module'
 import { FilesModule } from './files/files.module'
 import { SitemapModule } from './sitemap/sitemap.module'
-// import { TelegramModule } from './telegram/telegram.module'
+import { TelegramModule } from './telegram/telegram.module'
 //import { UserSchema} from "./Schemas/user.schema"; //схема данных для отправки в базу данных
 // import { UserModule } from './user/user.module';
 import { UserModule } from "./user/user.module";
+
 
 @Module({
 	imports: [
@@ -23,6 +24,8 @@ import { UserModule } from "./user/user.module";
 			// useNewUrlParser: true,
 			// useUnifiedTopology: true,
 		}),
+
+
 
 
 
@@ -40,7 +43,7 @@ import { UserModule } from "./user/user.module";
 		ReviewModule,
 		FilesModule,
 		SitemapModule,
-		//TelegramModule,
+		TelegramModule,
 		UserModule,
 
 
