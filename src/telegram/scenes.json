@@ -14,8 +14,12 @@
       {"text": "Реабилитация", "nextStep": "rehabilitation"},
       {"text": "Санаторно-курортное лечение", "nextStep": "spa-treatment"},
       {"text": "Полезная информация", "nextStep": "useful-information"},
-      {"text": "Другое", "nextStep": "found-you-contact"}
+      {"text": "Другое", "nextStep": "no-info"}
+    ],
+    "webapp": [
+      {"text": "Форма обратной связи", "webAppUrl": "https://tg-bot-ospt.vercel.app/"}
     ]
+
   },
 
   "disability": {
@@ -65,8 +69,6 @@
       {"text": "Социальное обслуживание", "nextStep": "social-services"},
       {"text": "Социальная выплата на обучение детей-инвалидов с нарушением слуха", "nextStep": "social-payment-education-children-hearing-disabilities"},
       {"text": "Право использования средств материнского капитала", "nextStep": "use-maternity-capital-funds"},
-
-
       {"text": "Назад↩️", "nextStep": "info"}
     ]
   },

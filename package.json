@@ -41,6 +41,7 @@
     "fs-extra": "^10.1.0",
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.0",
+    "nest-bull": "^0.9.0",
     "nestjs-telegraf": "^2.7.0",
     "nestjs-typegoose": "^7.1.38",
     "nodemailer": "^6.9.9",

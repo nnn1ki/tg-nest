@@ -14,20 +14,16 @@ import { TelegramModule } from './telegram/telegram.module'
 //import { UserSchema} from "./Schemas/user.schema"; //схема данных для отправки в базу данных
 // import { UserModule } from './user/user.module';
 import { UserModule } from "./user/user.module";
+import {DataModule} from "./dataForm/data.module";
+// import {MailModule} from "./mail/mail.module";
 
 
 @Module({
 	imports: [
-
-
 		TypegooseModule.forRoot("mongodb+srv://admin:admin@cluster0.4awrspq.mongodb.net/?retryWrites=true&w=majority", {
 			// useNewUrlParser: true,
 			// useUnifiedTopology: true,
 		}),
-
-
-
-
 
 		ConfigModule.forRoot(),
 		TypegooseModule.forRootAsync({
@@ -45,6 +41,9 @@ import { UserModule } from "./user/user.module";
 		SitemapModule,
 		TelegramModule,
 		UserModule,
+
+		DataModule,
+		// MailModule,
 
 
 	],

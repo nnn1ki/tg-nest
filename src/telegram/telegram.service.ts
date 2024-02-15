@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { Scenes, Telegraf, Markup } from 'telegraf'
 import { InjectBot, Start, Update } from 'nestjs-telegraf'
 import { UserService } from '../user/user.service';
+// import {MailService} from "../mail/mail.service";
 
 
 @Update()
@@ -23,12 +24,20 @@ export class TelegramService {
 		//};
 
 
-
-
+		const userQ = {
+			name: "test1", question: "question", howToCall: "1234567890"
+		}
+		// this.sendQuestion(userQ);
 		//this.usersService.create(user);
 	}
 
 	async sendMessage(message: string, chatId: string) {
 		await this.bot.telegram.sendMessage(chatId, message)
 	}
+
+
+	// async sendQuestion(userQ) {
+	// 	await this.mailService.sendMail(userQ);
+	// }
+
 }

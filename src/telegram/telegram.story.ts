@@ -16,6 +16,7 @@ import Client from '../espocrm-api/espocrm-api-client';
 import {TypegooseModule} from "nestjs-typegoose";
 import * as mongoose from "mongoose";
 import {message} from "telegraf/filters";
+import {keyboard} from "telegraf/typings/markup";
 
 type SessionValue = { storyStep?: string | null }
 
@@ -35,6 +36,7 @@ interface IStoryStep {
 	replies: { type: string; message: string }[]
 	buttons?: { text: string; nextStep: string;}[]
 	links?: {text: string; url: string;}[]
+	webapp?: {text: string; webAppUrl: string;}[]
 }
 
 
@@ -72,7 +74,7 @@ export class StoryScene {
 		const story = storySteps[currentStep || 'info']
 		if (!story) return
 
-		const { replies, buttons, links } = story
+		const { replies, buttons, links, webapp } = story
 
 		const inlineKeyboard = [];
 
@@ -93,6 +95,17 @@ export class StoryScene {
 					{
 						text,
 						url,
+					},
+				])
+			);
+		}
+
+		if (webapp){
+			inlineKeyboard.push(
+				...webapp.map(({ text,  webAppUrl}) => [
+					{
+						text,
+						web_app: {url: webAppUrl},
 					},
 				])
 			);
