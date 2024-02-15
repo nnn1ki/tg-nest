@@ -140,45 +140,45 @@ export class StoryScene {
 		}
 
 
-		// try {
-		// 	console.log('Trying to connect to MongoDB...');
-		//
-		// 	//todo - правильно получать ссылку из .env
-		// 	await mongoose.connect('mongodb+srv://admin:admin@cluster0.4awrspq.mongodb.net/?retryWrites=true&w=majority', {
-		// 		// useNewUrlParser: true,
-		// 		// useUnifiedTopology: true,
-		// 	});
-		// 	console.log('Connected to MongoDB successfully!');
-		// 	await UserMongoModel.create(userInfo);
-		// 	console.log('Data sent:', userInfo);
-		// } catch (e){
-		// 	console.log("Возникла ошибка при отправке данных - ", e);
-		// } finally {
-		// 	// Close the connection when done (important to avoid hanging connections)
-		// 	await mongoose.disconnect();
-		// 	console.log('Disconnected from MongoDB.');
-		// }
+		try {
+			console.log('Trying to connect to MongoDB...');
+
+			//todo - правильно получать ссылку из .env
+			await mongoose.connect('mongodb+srv://admin:admin@cluster0.4awrspq.mongodb.net/?retryWrites=true&w=majority', {
+				// useNewUrlParser: true,
+				// useUnifiedTopology: true,
+			});
+			console.log('Connected to MongoDB successfully!');
+			await UserMongoModel.create(userInfo);
+			console.log('Data sent:', userInfo);
+		} catch (e){
+			console.log("Возникла ошибка при отправке данных - ", e);
+		} finally {
+			// Close the connection when done (important to avoid hanging connections)
+			await mongoose.disconnect();
+			console.log('Disconnected from MongoDB.');
+		}
 
 
-		// const client = new Client(
-		// 	'https://my.baikal-family.ru',
-		// 	'99d864bd61e61ab41b16666ba7d0d0a2',
-		// 	'359bcb86d0330f259a282196f19583d1'
-		// );
-		//
-		// client.request('POST', 'Telegram', userInfo)
-		// 	.then(
-		// 		(response) => {
-		// 			// success
-		// 			console.log(response);
-		// 		}
-		// 	)
-		// 	.catch(
-		// 		(res) => {
-		// 			// error
-		// 			console.log("Ошибка отправки - ", res.statusCode, res.statusMessage);
-		// 		}
-		// 	);
+		const client = new Client(
+			'https://my.baikal-family.ru',
+			'99d864bd61e61ab41b16666ba7d0d0a2',
+			'359bcb86d0330f259a282196f19583d1'
+		);
+
+		client.request('POST', 'Telegram', userInfo)
+			.then(
+				(response) => {
+					// success
+					console.log(response);
+				}
+			)
+			.catch(
+				(res) => {
+					// error
+					console.log("Ошибка отправки - ", res.statusCode, res.statusMessage);
+				}
+			);
 
 		if (nextStep === 'stop') {
 			await userSessionService.updateUserSession(userId, {})
