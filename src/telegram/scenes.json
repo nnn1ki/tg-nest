@@ -17,7 +17,7 @@
       {"text": "Другое", "nextStep": "no-info"}
     ],
     "webapp": [
-      {"text": "Форма обратной связи", "webAppUrl": "https://tg-bot-ospt.vercel.app/"}
+      {"text": "Форма обратной связи", "webAppUrl": "https://bf-bot.conferoom.ru/react"}
     ]
 
   },
